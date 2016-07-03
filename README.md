@@ -56,8 +56,6 @@ Pour vérifier que les paramètres sont bien pris en compte
     root      6064     1  0 14:37 ?        00:00:00 /usr/bin/docker daemon -H tcp://0.0.0.0:4243 -H unix:///var/run/docker.sock --raw-logs
 
 
-
-
 ### Génération du container master
 
     cd <workspace>
@@ -65,14 +63,13 @@ Pour vérifier que les paramètres sont bien pris en compte
     cd master
     make build
 
-## Démarrage du master
 
+## Démarrage du master
 
 ### Lancement du container
 
     # Le répertoire courant doit être master
     make run
-
 
   Une fois que le serveur affiche le message suivant...
 
@@ -91,7 +88,7 @@ Pour vérifier que les paramètres sont bien pris en compte
     *************************************************************
     *************************************************************
 
-  ... Lancer jenkins dans l'explorateur http://localhost:8080
+  ... Lancer [jenkins dans l'explorateur](http://localhost:8080)
 
 
 ### Configuration de démarrage
