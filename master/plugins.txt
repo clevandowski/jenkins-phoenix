@@ -1,4 +1,4 @@
-durable-task:1.8
+durable-task:1.11
 icon-shim:2.0.3
 ssh-credentials:1.11
 ssh-slaves:1.10

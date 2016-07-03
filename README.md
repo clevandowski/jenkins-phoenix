@@ -56,7 +56,7 @@ Jenkins Master &amp; Slaves basés sur Docker avec persistance de la configurati
     root      6064     1  0 14:37 ?        00:00:00 /usr/bin/docker daemon -H tcp://0.0.0.0:4243 -H unix:///var/run/docker.sock --raw-logs
 
 
-### Génération du container master
+### Génération du container de Jenkins master
 
     cd <workspace>
     git clone https://github.com/clevandowski/jenkins-phoenix.git
@@ -64,7 +64,7 @@ Jenkins Master &amp; Slaves basés sur Docker avec persistance de la configurati
     make build
 
 
-## Démarrage du master
+## Démarrage de Jenkins master
 
 ### Lancement du container
 
@@ -99,3 +99,16 @@ Jenkins Master &amp; Slaves basés sur Docker avec persistance de la configurati
 
   Enfin, la dernière étape de l'initialisation requiert de saisir les informations du 1er utilisateur admin (login, password, nom complet & mail). Cliquer sur "Save and Continue". Cliquer ensuite sur "Start using Jenkins", ce qui amène finalement à la page d'accueil de Jenkins.
 
+
+## Configuration de Jenkins master par l'UI
+
+  Ouvrir la configuration de Jenkins, en cliquant sur le lien [Manage Jenkins](http://localhost:8080/manage), puis aller dans la configuration système, lien [Configure System](http://localhost:8080/configure).
+
+  Dans la catégorie "Cloud", Ajout un cloud en sélectionnant "Add a new Cloud", "docker". Définir les paramètres suivants du cloud:
+
+    Name:       jenkins-phoenix-cloud
+    Docker URL: http://172.17.0.1:4243
+
+  Tester la configuration en cliquant sur le bouton "Test Connection". La version de docker doit s'afficher à droite si la configuration est correcte.
+
+  Sauvegarder la configuration en cliquant sur "Save" en bas de la page.
