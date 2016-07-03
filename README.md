@@ -66,12 +66,20 @@ Jenkins Master &amp; Slaves basés sur Docker avec persistance de la configurati
     root      6064     1  0 14:37 ?        00:00:00 /usr/bin/docker daemon -H tcp://0.0.0.0:4243 -H unix:///var/run/docker.sock --raw-logs
 
 
-### Génération du container de Jenkins master
+### Récupération du repository GIT
 
     cd <workspace>
     git clone https://github.com/clevandowski/jenkins-phoenix.git
+
+### Génération du container de Jenkins master
+
     cd master
-    make build
+    make test
+
+### Génération du container de Jenkins slave
+
+    cd slave
+    make test
 
 
 ## Démarrage de Jenkins master
@@ -101,7 +109,7 @@ Jenkins Master &amp; Slaves basés sur Docker avec persistance de la configurati
   ... Copier le code dans le clipboard et lancer [jenkins dans l'explorateur](http://localhost:8080)
 
 
-### Initialisation de Jenkins
+### Initialisation de Jenkins master
 
   Lors du 1er accès à Jenkins, la page "Unlock Jenkins" demande de saisir le mot de passe administrateur fourni dans le log de démarrage.
 
@@ -111,6 +119,8 @@ Jenkins Master &amp; Slaves basés sur Docker avec persistance de la configurati
 
 
 ## Configuration de Jenkins master par l'UI
+
+### Création d'un cloud Docker
 
   Ouvrir la configuration de Jenkins, en cliquant sur le lien [Manage Jenkins](http://localhost:8080/manage), puis aller dans la configuration système, lien [Configure System](http://localhost:8080/configure).
 
@@ -122,4 +132,32 @@ Jenkins Master &amp; Slaves basés sur Docker avec persistance de la configurati
   Tester la configuration en cliquant sur le bouton "Test Connection". La version de docker doit s'afficher à droite si la configuration est correcte.
 
   Sauvegarder la configuration en cliquant sur "Save" en bas de la page.
-ps -eaf | grep "docker daemon" | grep `cat /var/run/docker.pid`
+
+### Création d'un docker template
+
+  Définir les propriétés comme suit:
+
+    Docker Image:               clevandowski/jenkins-phoenix-slave
+    Instance Capacity:          4
+    Remote Filing System Root:  /home/jenkins
+    Labels:                     jenkins-slave
+    Usage:                      Only build jobs with label expression matching this node
+    Availability:               Experimental: Docker Cloud Retention Strategie
+      Idle timeout:               5
+    \# of executors:            1
+    Launch method:              Docker SSH computer launcher
+      Credentials:              jenkins/jenkins
+      Port:                       22
+      Maximum Number of Retries:  0
+      Seconds To Wait Between Retries:  0
+    Pull strategy:              Pull once and update latest
+
+### Création d'un job de test
+
+  Créer un nouveau job freestyle.
+  Cocher l'option "Docker Container". Vérifier que la sous-option "Clean local images" est bien cochée.
+  Cocher l'option "Restrict where this project can be run", et indiquer "jenkins-slave" dans "Label Expression".
+
+  Définir une tache de build simple, par exemple un build "Execute shell" qui va lancer la commande "ls -al"
+
+  Sauvegarder et déclencher le job. Après quelques secondes, le container est provisionné, le script est exécuté. On peut voir la console dans l'historique du job.
