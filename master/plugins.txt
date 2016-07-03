@@ -1,0 +1,7 @@
+durable-task:1.8
+icon-shim:2.0.3
+ssh-credentials:1.11
+ssh-slaves:1.10
+token-macro:1.12.1
+docker-plugin:0.16.0
+
