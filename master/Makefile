@@ -12,15 +12,15 @@ init:	testenv
 	sudo chown -R 1000:1000 /opt/jenkins-phoenix-master
 
 build:	testenv
-	docker build -t clevandowski/jenkins-phoenix-master .
+	sudo docker build -t clevandowski/jenkins-phoenix-master .
 
 test:	build
 
 run:	test
 	test -d /opt/jenkins-phoenix-master
-	docker run -d --name jenkins-phoenix-master -p 8080:8080 -v /opt/jenkins-phoenix-master:/var/jenkins_home clevandowski/jenkins-phoenix-master
+	sudo docker run -d --name jenkins-phoenix-master -p 8080:8080 -v /opt/jenkins-phoenix-master:/var/jenkins_home clevandowski/jenkins-phoenix-master
 
 stop:
-	docker stop jenkins-phoenix-master
-	docker rm jenkins-phoenix-master
+	sudo docker stop jenkins-phoenix-master
+	sudo docker rm jenkins-phoenix-master
 
