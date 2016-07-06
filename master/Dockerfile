@@ -1,3 +1,4 @@
+#FROM malet/jenkins-blueocean-docker:latest
 FROM jenkinsci/jenkins:2.11
 
 COPY plugins.txt /usr/share/jenkins/ref/
