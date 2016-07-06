@@ -52,6 +52,8 @@ Jenkins Master &amp; Slaves basés sur Docker avec persistance de la configurati
 
   Le daemon docker doit être accessible via http (cf https://wiki.jenkins-ci.org/display/JENKINS/Docker+Plugin, partie "Docker Environment")
 
+  L'utilisateur doit faire partie des sudoers du système.
+
   Exemple de configuration dans le fichier /etc/default/docker
 
     DOCKER_OPTS="-H tcp://0.0.0.0:4243 -H unix:///var/run/docker.sock"
@@ -74,12 +76,13 @@ Jenkins Master &amp; Slaves basés sur Docker avec persistance de la configurati
 ### Génération du container de Jenkins master
 
     cd master
-    make test
+    sudo make test
+
 
 ### Génération du container de Jenkins slave
 
     cd slave
-    make test
+    sudo make test
 
 
 ## Démarrage de Jenkins master
@@ -87,7 +90,8 @@ Jenkins Master &amp; Slaves basés sur Docker avec persistance de la configurati
 ### Lancement du container
 
     # Le répertoire courant doit être master
-    make run
+    cd master
+    sudo make run
 
   Une fois que le serveur affiche le message suivant...
 
@@ -147,9 +151,7 @@ Jenkins Master &amp; Slaves basés sur Docker avec persistance de la configurati
     \# of executors:            1
     Launch method:              Docker SSH computer launcher
       Credentials:              jenkins/jenkins
-      Port:                       22
-      Maximum Number of Retries:  0
-      Seconds To Wait Between Retries:  0
+    Remote FS Root Mapping	/opt/jenkins-phoenix-master
     Pull strategy:              Pull once and update latest
 
 ### Création d'un job de test

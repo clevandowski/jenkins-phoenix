@@ -1,5 +1,5 @@
 build:
-	sudo docker build -t clevandowski/jenkins-phoenix-slave .
+	docker build -t clevandowski/jenkins-phoenix-slave .
 
 test:	build
 	
