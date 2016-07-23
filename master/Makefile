@@ -27,3 +27,6 @@ clean:	testenv
 
 log:	testenv
 	docker logs -f jenkins-phoenix-master
+
+check-plugins:
+	./bin/checkPluginsVersion.sh
