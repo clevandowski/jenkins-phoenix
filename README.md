@@ -157,7 +157,6 @@ Jenkins Master &amp; Slaves basés sur Docker avec persistance de la configurati
 ### Création d'un job de test
 
   Créer un nouveau job freestyle.
-  Cocher l'option "Docker Container". Vérifier que la sous-option "Clean local images" est bien cochée.
   Cocher l'option "Restrict where this project can be run", et indiquer "jenkins-slave" dans "Label Expression".
 
   Définir une tache de build simple, par exemple un build "Execute shell" qui va lancer la commande "ls -al"

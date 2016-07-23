@@ -22,3 +22,8 @@ stop:
 	docker stop jenkins-phoenix-master
 	docker rm jenkins-phoenix-master
 
+clean:	testenv
+	docker rmi clevandowski/jenkins-phoenix-master
+
+log:	testenv
+	docker logs -f jenkins-phoenix-master
