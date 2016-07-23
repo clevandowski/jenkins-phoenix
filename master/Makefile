@@ -9,10 +9,10 @@ init:	testenv
 	mkdir -p /opt/jenkins-phoenix-master
 	chown -R 1000:1000 /opt/jenkins-phoenix-master
 
-build:	testenv
-	docker build -t clevandowski/jenkins-phoenix-master .
+test:	testenv
 
-test:	build
+build:	test
+	docker build -t clevandowski/jenkins-phoenix-master .
 
 run:	test
 	test -d /opt/jenkins-phoenix-master
@@ -23,7 +23,7 @@ stop:
 	docker rm jenkins-phoenix-master
 
 clean:	testenv
-	docker rmi clevandowski/jenkins-phoenix-master
+	docker rmi -f clevandowski/jenkins-phoenix-master | true
 
 log:	testenv
 	docker logs -f jenkins-phoenix-master
