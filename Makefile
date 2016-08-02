@@ -1,3 +1,6 @@
+testplugins:
+	cd master && make testplugins
+
 testenv:
 	cd master && make testenv
 	cd slave && make testenv
