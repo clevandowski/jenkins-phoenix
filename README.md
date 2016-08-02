@@ -1,4 +1,7 @@
 # jenkins-phoenix
+
+ATTENTION: Le plugin docker-plugin ne supporte pas la version docker 1.12 cf https://issues.jenkins-ci.org/browse/JENKINS-36080. 
+
 Jenkins Master &amp; Slaves basés sur Docker avec persistance de la configuration dans le repository GIT 
 
 
@@ -143,7 +146,7 @@ Jenkins Master &amp; Slaves basés sur Docker avec persistance de la configurati
 
     Docker Image:               clevandowski/jenkins-phoenix-slave
     Instance Capacity:          4
-    Remote Filing System Root:  /home/jenkins
+    Remote Filing System Root:  /var/jenkins_home
     Labels:                     jenkins-slave
     Usage:                      Only build jobs with label expression matching this node
     Availability:               Experimental: Docker Cloud Retention Strategie

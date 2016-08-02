@@ -21,6 +21,7 @@ init:
 	cd master && make init
 
 run:
+	cd slave && make test
 	cd master && make run
 
 stop:
