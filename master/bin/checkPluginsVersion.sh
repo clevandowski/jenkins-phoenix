@@ -1,4 +1,8 @@
 #!/bin/bash
+#
+# Exemple de format (sans le "#" devant bien sur)
+#
+#script-security:1.22 # https://wiki.jenkins-ci.org/display/JENKINS/Script+Security+Plugin
 
 getPluginLastVersion() {
   local myPluginUrl="" myPluginLastVersion=""
@@ -19,6 +23,9 @@ checkContext() {
 
 checkPlugins() {
   local myPluginId="" myPluginVersion="" myPluginUrl="" myPluginLastVersion="" myPluginIdAndVersion="" myComment="" myDeprecatedPluginNumber=0
+
+  > plugins.new.txt
+  # myComment c'est toujours le caractère "#"
   while read myPluginIdAndVersion myComment myPluginUrl; do
     if [ -n "$myPluginIdAndVersion" ] && [ -n "$myPluginUrl" ]; then 
       # echo "plugin id and version: $myPluginIdAndVersion"
@@ -36,14 +43,15 @@ checkPlugins() {
       if [ "$myPluginVersion" != "$myPluginLastVersion" ]; then
         ((myDeprecatedPluginNumber++))
       fi
+      echo "$myPluginId:$myPluginLastVersion # $myPluginUrl" >> plugins.new.txt
+    else
+      echo "Erreur: format inconnu. Exemple de format:"
+      echo "script-security:1.22 # https://wiki.jenkins-ci.org/display/JENKINS/Script+Security+Plugin"
+      exit 1
     fi
   done < plugins.txt
-  echo "Nb plugin to update: $myDeprecatedPluginNumber" 
-  if [ $myDeprecatedPluginNumber -eq 0 ]; then
-    exit 0
-  else
-    exit 1
-  fi
+  echo "Nb plugin updated: $myDeprecatedPluginNumber" 
+  echo "New config file written in plugins.new.txt. Overwrite the current file plugins.txt in order to use the latest plugins version."
 }
 
 main() {
