@@ -50,7 +50,7 @@ checkPlugins() {
       exit 1
     fi
   done < plugins.txt
-  echo "Nb plugin updated: $myDeprecatedPluginNumber" 
+  echo "Nb plugin to update: $myDeprecatedPluginNumber" 
   echo "New config file written in plugins.new.txt. Overwrite the current file plugins.txt in order to use the latest plugins version."
 }
 

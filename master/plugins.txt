@@ -1,20 +1,22 @@
-script-security:1.23 # https://wiki.jenkins-ci.org/display/JENKINS/Script+Security+Plugin
+script-security:1.24 # https://wiki.jenkins-ci.org/display/JENKINS/Script+Security+Plugin
 structs:1.5 # https://wiki.jenkins-ci.org/display/JENKINS/Structs+plugin
 workflow-step-api:2.4 # https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Step+API+Plugin
 workflow-scm-step:2.2 # https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+SCM+Step+Plugin
 ace-editor:1.1 # https://wiki.jenkins-ci.org/display/JENKINS/ACE+Editor+Plugin
-workflow-api:2.4 # https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+API+Plugin
-workflow-support:2.8 # https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Supporting+APIs+Plugin
+workflow-api:2.5 # https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+API+Plugin
+workflow-support:2.10 # https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Supporting+APIs+Plugin
 scm-api:1.3 # https://wiki.jenkins-ci.org/display/JENKINS/SCM+API+Plugin
 jackson2-api:2.7.3 # https://wiki.jenkins-ci.org/display/JENKINS/Jackson2+API+Plugin
 metrics:3.1.2.9 # https://wiki.jenkins-ci.org/display/JENKINS/Metrics+Plugin
 support-core:2.33 # https://wiki.jenkins-ci.org/display/JENKINS/Support+Core+Plugin
 jquery-detached:1.2.1 # https://wiki.jenkins-ci.org/display/JENKINS/jQuery+Detached+Plugin
-workflow-cps:2.18 # https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Groovy+Plugin
+workflow-cps:2.21 # https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Groovy+Plugin
 docker-commons:1.5 # https://wiki.jenkins-ci.org/display/JENKINS/Docker+Commons+Plugin
-credentials:2.1.5 # https://wiki.jenkins-ci.org/display/JENKINS/Credentials+Plugin
+credentials:2.1.7 # https://wiki.jenkins-ci.org/display/JENKINS/Credentials+Plugin
 authentication-tokens:1.3 # https://wiki.jenkins-ci.org/display/JENKINS/Authentication+Tokens+API+Plugin
 icon-shim:2.0.3 # https://wiki.jenkins-ci.org/display/JENKINS/Icon+Shim+Plugin
 docker-workflow:1.9 # https://wiki.jenkins-ci.org/display/JENKINS/CloudBees+Docker+Pipeline+Plugin
 durable-task:1.12 # https://wiki.jenkins-ci.org/display/JENKINS/Durable+Task+Plugin
 docker-plugin:0.16.2 # https://wiki.jenkins-ci.org/display/JENKINS/Docker+Plugin
+http_request:1.8.12 # https://wiki.jenkins-ci.org/display/JENKINS/HTTP+Request+Plugin
+
