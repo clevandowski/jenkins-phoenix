@@ -4,7 +4,7 @@ testplugins:
 
 testenv:
 	# Verification que le user courant est root (via sudo). Lancer "sudo make <command>"
-	test $$(id -u) -eq 0 || (echo "[ERROR] Vous devez avoir les droits root"; exit 1)
+	#test $$(id -u) -eq 0 || (echo "[ERROR] Vous devez avoir les droits root"; exit 1)
 	# Vérification que le docker daemon tourne
 	docker system info || (echo "[ERROR] Le docker daemon n'est pas accessible"; exit 1)
 	# Verification que le daemon docker ecoute bien en tcp

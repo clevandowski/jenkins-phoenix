@@ -1,6 +1,6 @@
 testenv:
 	# Verification que le user courant est root (via sudo). Lancer "sudo make <command>"
-	test $$(id -u) -eq 0
+	# test $$(id -u) -eq 0
 
 build:	testenv
 	docker build -t clevandowski/jenkins-phoenix-slave .
