@@ -1,4 +1,4 @@
-FROM jenkinsci/jenkins:lts
+FROM jenkins/jenkins:lts
 
 COPY plugins.txt /usr/share/jenkins/ref/
 RUN /usr/local/bin/plugins.sh /usr/share/jenkins/ref/plugins.txt
