@@ -1,8 +1,8 @@
-durable-task:1.12 # https://wiki.jenkins-ci.org/display/JENKINS/Durable+Task+Plugin
-icon-shim:2.0.3 # https://wiki.jenkins-ci.org/display/JENKINS/Icon+Shim+Plugin
-credentials:2.1.4 # https://wiki.jenkins-ci.org/display/JENKINS/Credentials+Plugin
-ssh-credentials:1.12 # https://wiki.jenkins-ci.org/display/JENKINS/SSH+Credentials+Plugin
-ssh-slaves:1.11 # https://wiki.jenkins-ci.org/display/JENKINS/SSH+Slaves+plugin
-token-macro:1.12.1 # https://wiki.jenkins-ci.org/display/JENKINS/Token+Macro+Plugin
-docker-plugin:0.16.1 # https://wiki.jenkins-ci.org/display/JENKINS/Docker+Plugin
-
+durable-task:1.14
+icon-shim:2.0.3
+credentials:2.1.14
+structs:1.9
+ssh-credentials:1.13
+ssh-slaves:1.20
+token-macro:2.1
+docker-plugin:0.16.2

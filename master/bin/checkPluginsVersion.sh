@@ -1,12 +1,11 @@
 #!/bin/bash
 
 getPluginLastVersion() {
-  local myPluginUrl="" myPluginLastVersion=""
-  myPluginUrl=$1
+  local myPluginId="" myPluginLastVersion=""
+  myPluginId=$1
 
-  # echo "plugin url: $myPluginUrl"
-
-  myPluginLastVersion=$(curl -XGET $myPluginUrl 2>/dev/null | grep "http://updates.jenkins-ci.org/latest" | sed -e "s/^.*<a href=\"http:\/\/updates.jenkins-ci.org\/latest\/[^>]\+>\([^<]\+\).*$/\1/")
+  # echo "plugin id: $myPluginId"
+  myPluginLastVersion=$(curl -XGET https://plugins.jenkins.io/$myPluginId 2>/dev/null | grep '<h1 class="title"' | grep '<span class="v"' | sed -e 's|^.*<span class="v"[^>]*>\([^<]*\)</span>.*$|\1|')
   echo $myPluginLastVersion
 }
 
@@ -18,18 +17,16 @@ checkContext() {
 }
 
 checkPlugins() {
-  local myPluginId="" myPluginVersion="" myPluginUrl="" myPluginLastVersion="" myPluginIdAndVersion="" myComment="" myDeprecatedPluginNumber=0
-  while read myPluginIdAndVersion myComment myPluginUrl; do
-    if [ -n "$myPluginIdAndVersion" ] && [ -n "$myPluginUrl" ]; then 
+  local myPluginId="" myPluginVersion="" myPluginUrl="" myPluginLastVersion="" myPluginIdAndVersion="" myDeprecatedPluginNumber=0
+  while read myPluginIdAndVersion; do
+    if [ -n "$myPluginIdAndVersion" ]; then 
       # echo "plugin id and version: $myPluginIdAndVersion"
-      # echo "plugin url: $myPluginUrl"
       myPluginId=$(echo $myPluginIdAndVersion | cut -d: -f1)
       myPluginVersion=$(echo $myPluginIdAndVersion | cut -d: -f2)
 
       # echo "plugin id: $myPluginId"
       # echo "plugin version: $myPluginVersion"
-      # echo "plugin url: $myPluginUrl"
-      myPluginLastVersion=$(getPluginLastVersion $myPluginUrl)
+      myPluginLastVersion=$(getPluginLastVersion $myPluginId)
       # echo "plugin last version: $myPluginLastVersion"
 
       echo "plugin: $myPluginId, current version: $myPluginVersion, last version: $myPluginLastVersion"
